@@ -33,7 +33,23 @@ body {
 #calculator header h1 {
     color: #ffffff;
     text-align: right;
-    padding: 75px 15px 15px;
+    padding: 125px 15px 15px;
     margin: 0;
     background: #448aff;
+}
+
+.button-row {
+    display: flex;
+}
+
+#calculator > div > div:nth-child(1) button {
+    background: #d50000 !important;
+}
+
+.button-row button {
+    color: #fff;
+    width: 20%;
+    height: 60px;
+    border: none;
+    background: #0097a7;
 }
