@@ -13,48 +13,51 @@
         <small>
             Calculator plus
         </small>
-        <h1>0.00</h1>
+        <h1 id="mainNumber"></h1>
     </header>
     <div class="button-rows">
         <div class="button-row">
-            <button>MR</button>
-            <button>M+</button>
-            <button>M-</button>
-            <button>MC</button>
-            <button>C</button>
+            <button data-type="memory">MR</button>
+            <button data-type="memory">M+</button>
+            <button data-type="memory">M-</button>
+            <button data-type="memory">MC</button>
+            <button data-type="memory">C</button>
         </div>
         <div class="button-row">
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>+</button>
-            <button>-</button>
+            <button data-type="number">7</button>
+            <button data-type="number">8</button>
+            <button data-type="number">9</button>
+            <button data-type="function">+</button>
+            <button data-type="function">-</button>
         </div>
         <div class="button-row">
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>/</button>
-            <button>*</button>
+            <button data-type="number">4</button>
+            <button data-type="number">5</button>
+            <button data-type="number">6</button>
+            <button data-type="function">/</button>
+            <button data-type="function">*</button>
         </div>
         <div class="button-row">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>^</button>
-            <button>√</button>
+            <button data-type="number">1</button>
+            <button data-type="number">2</button>
+            <button data-type="number">3</button>
+            <button data-type="function">^</button>
+            <button data-type="function">√</button>
         </div>
         <div class="button-row">
-            <button>0</button>
-            <button>00</button>
-            <button>.</button>
-            <button>+/-</button>
-            <button>=</button>
+            <button data-type="number">0</button>
+            <button data-type="number">00</button>
+            <button data-type="function">.</button>
+            <button data-type="function">+/-</button>
+            <button data-type="calculate">=</button>
         </div>
     </div>
     <footer>
         <a href="https://github.com/stevenbraham/javascript-calculator" target="_blank" class="btn-github"></a>
     </footer>
 </main>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="lib/Display.js"></script>
+<script src="calculator.js"></script>
 </body>
 </html>
