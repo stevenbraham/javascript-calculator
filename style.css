@@ -54,10 +54,23 @@ body {
     height: 60px;
     border: none;
     background: #0097a7;
+    cursor: pointer;
 }
 
-.btn-row button, .btn-github {
+.button-row button, .btn-github {
     transition: all .9s cubic-bezier(.15, .66, 0, 1);
+}
+
+.button-row button:hover {
+    font-weight: bold;
+    background: #ffffff;
+    color: #0097a7;
+}
+
+#calculator > div > div:nth-child(1) button:hover {
+    font-weight: bold;
+    background: #ffffff !important;
+    color: #d50000;
 }
 
 footer {
