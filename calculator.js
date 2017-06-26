@@ -1,7 +1,9 @@
 /**
  * Created by stevenbraham on 23-05-17.
  */
-//main logic engine that straps everything together
+//Main logic engine that straps everything together
+//I decided to separate all functionality by defining several classes
+//My application relies heavily on recent ES6 functions such as string literals, classes and arrow functions.
 
 'use strict';
 
