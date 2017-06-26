@@ -13,6 +13,12 @@ $(() => {
     let displayEngine = new Display();
     let memoryEngine = new Memory();
     let errorEngine = new Error();
+
+    //variables
+    let lastAnswer = 0; //result of most recent calculation
+    let lastFunction = ""; //last function that was executed eg +, -, / etc
+    let number = 0; //temp variable for storing the input after a screen clear
+
     //listen to click events
     $("button").click(function () { //$("button").click is short for $("button").on('click',...
         let buttonContent = $(this).text();
@@ -36,6 +42,17 @@ $(() => {
                         break;
                     default:
                         //Not supported/implemented
+                        errorEngine.throwUnsupportedError(buttonContent);
+                        break;
+                }
+                break;
+            case "function":
+                //actual calculation functions
+                switch (buttonContent) {
+                    case "+":
+                        
+                        break;
+                    default:
                         errorEngine.throwUnsupportedError(buttonContent);
                         break;
                 }
