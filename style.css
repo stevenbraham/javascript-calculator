@@ -20,18 +20,19 @@ body {
     border-width: 35px 15px 5px;
 }
 
-#calculator header {
+#display {
     background: #2979ff;
     color: #ffffff;
     text-align: center;
+    position: relative;
 }
 
-#calculator header > small {
+#statusBar {
     display: block;
     padding: 10px;
 }
 
-#calculator header h1 {
+#mainNumber {
     color: #ffffff;
     text-align: right;
     padding: 15px;
@@ -40,7 +41,6 @@ body {
     min-height: 1em;
     word-wrap: break-word;
     height: 175px;
-    position: relative;
 }
 
 #memoryNumber {
@@ -48,6 +48,11 @@ body {
     position: absolute;
     bottom: 5px;
     padding: 0;
+    left: 15px;
+}
+
+#memoryNumber:before {
+    content: "M: ";
 }
 
 
