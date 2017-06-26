@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Calculator+</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link rel="icon" href="favicon.png"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -13,7 +14,11 @@
         <small>
             Calculator plus
         </small>
-        <h1 id="mainNumber"></h1>
+        <h1 id="mainNumber">
+            <small id="memoryNumber">
+
+            </small>
+        </h1>
     </header>
     <div class="button-rows">
         <div class="button-row">
@@ -47,7 +52,7 @@
         <div class="button-row">
             <button data-type="number">0</button>
             <button data-type="number">00</button>
-            <button data-type="function">.</button>
+            <button data-type="number">.</button>
             <button data-type="function">+/-</button>
             <button data-type="calculate">=</button>
         </div>

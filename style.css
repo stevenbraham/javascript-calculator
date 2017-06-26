@@ -26,7 +26,7 @@ body {
     text-align: center;
 }
 
-#calculator header small {
+#calculator header > small {
     display: block;
     padding: 10px;
 }
@@ -34,11 +34,22 @@ body {
 #calculator header h1 {
     color: #ffffff;
     text-align: right;
-    padding: 125px 15px 15px;
+    padding: 15px;
     margin: 0;
     background: #448aff;
     min-height: 1em;
+    word-wrap: break-word;
+    height: 175px;
+    position: relative;
 }
+
+#memoryNumber {
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    padding: 0;
+}
+
 
 .button-row {
     display: flex;
