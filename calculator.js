@@ -5,11 +5,12 @@
 
 'use strict';
 
+
 $(() => {
     //only init objects after jquery if fully available
     let displayEngine = new Display();
     let memoryEngine = new Memory();
-
+    let errorEngine = new Error();
     //listen to click events
     $("button").click(function () { //$("button").click is short for $("button").on('click',...
         let buttonContent = $(this).text();
@@ -19,6 +20,15 @@ $(() => {
             case "number":
                 //simple number, add to display and working memory
                 displayEngine.appendNumber(buttonContent);
+                break;
+            case "screen":
+                //functions related to manipulating the display
+                switch (buttonContent) {
+                    default:
+                        //Not supported/implemented
+                        errorEngine.throwUnsupportedError(buttonContent);
+                        break;
+                }
                 break;
             case "memory":
                 //memory storing and retrieving related functions
@@ -41,13 +51,13 @@ $(() => {
                         break;
                     default:
                         //Not supported/implemented
-                        throw `Memory function type ${buttonContent} is an unsupported operation`;
+                        errorEngine.throwUnsupportedError(buttonContent);
                         break;
                 }
                 break;
             default:
                 //Not supported/implemented button type
-                throw `button type ${buttonType} is an unsupported operation`;
+                errorEngine.throwUnsupportedError(buttonContent);
                 break;
         }
     });
