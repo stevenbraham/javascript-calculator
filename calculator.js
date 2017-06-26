@@ -24,6 +24,14 @@ $(() => {
             case "screen":
                 //functions related to manipulating the display
                 switch (buttonContent) {
+                    case "C":
+                        //clear screen
+                        displayEngine.setNumber("");
+                        break;
+                    case "+/-":
+                        //flip
+                        displayEngine.setNumber(-displayEngine.getNumber());
+                        break;
                     default:
                         //Not supported/implemented
                         errorEngine.throwUnsupportedError(buttonContent);
