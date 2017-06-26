@@ -20,6 +20,7 @@ $(() => {
                 break;
             default:
                 //Not supported/implemented button type
+                throw `button type ${buttonType} is an unsupported operation`;
                 break;
         }
     });
