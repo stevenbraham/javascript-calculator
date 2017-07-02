@@ -7,6 +7,8 @@
 
 'use strict';
 
+
+//logic that has to be executed on page load
 $(() => {
     //only init objects after jquery if fully available
     let displayEngine = new Display();
