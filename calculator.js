@@ -29,6 +29,10 @@ $(() => {
         //get button type from data attribute
         let buttonType = $(this).data("type");
         switch (buttonType) {
+            case "calculate":
+                //actual calculation logic
+
+                break;
             case "number":
                 //simple number, add to display and working memory
                 displayEngine.appendNumber(buttonContent);
