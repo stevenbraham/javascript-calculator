@@ -7,7 +7,6 @@
 
 'use strict';
 
-
 $(() => {
     //only init objects after jquery if fully available
     let displayEngine = new Display();
@@ -17,7 +16,7 @@ $(() => {
     //variables
     let lastAnswer = 0; //result of most recent calculation
     let lastFunction = ""; //last function that was executed eg +, -, / etc
-    let number = 0; //temp variable for storing the input after a screen clear
+    let previousNumber = 0; //temp variable for storing the input after a screen clear
 
     //listen to click events
     $("button").click(function () { //$("button").click is short for $("button").on('click',...
@@ -32,9 +31,11 @@ $(() => {
             case "screen":
                 //functions related to manipulating the display
                 switch (buttonContent) {
-                    case "C":
-                        //clear screen
-                        displayEngine.setNumber("");
+                    case "AC":
+                        //reset everything
+                        displayEngine.clearAll();
+                        lastFunction = "";
+                        previousNumber = "";
                         break;
                     case "+/-":
                         //flip
@@ -47,15 +48,12 @@ $(() => {
                 }
                 break;
             case "function":
-                //actual calculation functions
-                switch (buttonContent) {
-                    case "+":
-                        
-                        break;
-                    default:
-                        errorEngine.throwUnsupportedError(buttonContent);
-                        break;
-                }
+                //store the operation, but don't do anything until the user presses =
+                displayEngine.setOperation(buttonContent);
+                previousNumber = displayEngine.getNumber();
+                lastFunction = buttonContent;
+                displayEngine.clearScreen();
+                displayEngine.setPreviousNumber(previousNumber);
                 break;
             case "memory":
                 //memory storing and retrieving related functions

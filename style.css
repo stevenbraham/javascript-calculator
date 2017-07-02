@@ -43,18 +43,28 @@ body {
     height: 175px;
 }
 
-#memoryNumber {
+#memoryNumber, #currentOperation, #previousNumber {
     font-size: 10px;
     position: absolute;
     bottom: 5px;
     padding: 0;
+}
+
+#memoryNumber {
     left: 15px;
+}
+
+#currentOperation {
+    right: 15px;
+}
+
+#previousNumber {
+    left: 50%;
 }
 
 #memoryNumber:before {
     content: "M: ";
 }
-
 
 .button-row {
     display: flex;
