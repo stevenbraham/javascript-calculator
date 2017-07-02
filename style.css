@@ -1,15 +1,40 @@
 html {
     font-size: 1.6vh;
+    min-height: 100vh;
 }
 
 body {
     display: flex;
-    background: rgba(255, 255, 255, 1);
-    background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(245, 245, 245, 1) 100%);
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#header, #footer {
+    position: absolute;
+    color: #fff;
+    background: #333;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+#header {
+    top: 0;
+}
+
+#header .btn-share {
+    border-radius: 1rem;
+    text-decoration: none;
+    color: #ffffff;
+    background: #00C851;
+    padding: 0.333rem;
+    width: 50%;
+    display: block;
+    margin: auto;
 }
 
 #calculator {
@@ -101,7 +126,7 @@ body {
     color: #d50000;
 }
 
-footer {
+#calculator footer {
     background: #333;
     color: #fff;
     display: flex;
@@ -110,7 +135,7 @@ footer {
     min-height: 6rem;
 }
 
-footer .btn-github {
+#calculator footer .btn-github {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     height: 2em;
     width: 2em;
@@ -124,8 +149,17 @@ footer .btn-github {
 
 }
 
-footer .btn-github:hover {
+#calculator footer .btn-github:hover {
     color: #333;
     background: #ffffff;
     box-shadow: none;
+}
+
+#footer {
+    bottom: 0;
+}
+
+#footer a {
+    font-weight: bold;
+    color: #fff;
 }
