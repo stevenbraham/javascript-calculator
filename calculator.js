@@ -18,6 +18,9 @@ $(() => {
     let lastFunction = ""; //last function that was executed eg +, -, / etc
     let previousNumber = 0; //temp variable for storing the input after a screen clear
 
+    //display the number in memory
+    displayEngine.setMemoryNumber(memoryEngine.number);
+
     //listen to click events
     $("button").click(function () { //$("button").click is short for $("button").on('click',...
         let buttonContent = $(this).text();
@@ -71,7 +74,7 @@ $(() => {
                         break;
                     case "MC":
                         //reset memory
-                        memoryEngine.number = 0;
+                        memoryEngine.reset();
                         displayEngine.setMemoryNumber(memoryEngine.number);
                         break;
                     default:
