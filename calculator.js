@@ -7,9 +7,9 @@
 
 'use strict';
 
-
 //logic that has to be executed on page load
 $(() => {
+
     //only init objects after jquery if fully available
     let displayEngine = new Display();
     let memoryEngine = new Memory();
@@ -19,6 +19,7 @@ $(() => {
     let lastAnswer = 0; //result of most recent calculation
     let lastFunction = ""; //last function that was executed eg +, -, / etc
     let previousNumber = 0; //temp variable for storing the input after a screen clear
+    let newCalculation = true; //temp variable for storing if the user press = multiple times, true indicates last answer hasn't been set yet
 
     //display the number in memory
     displayEngine.setMemoryNumber(memoryEngine.number);
@@ -31,7 +32,49 @@ $(() => {
         switch (buttonType) {
             case "calculate":
                 //actual calculation logic
+                let number = displayEngine.getNumber();
 
+                //due to the way I handle the multiple =, the order of numbers reverses
+
+                let numberOne = newCalculation ? previousNumber : number;
+                let numberTwo = newCalculation ? number : previousNumber;
+                //check operation
+                switch (lastFunction) {
+                    case "+":
+                        lastAnswer = numberOne + numberTwo;
+                        break;
+                    case "-":
+                        lastAnswer = numberOne - numberTwo;
+                        break;
+                    case "/":
+                        //check for divide by 0
+                        if (numberTwo == 0) {
+                            errorEngine.throwError("You can't divide by 0!");
+                        }
+                        lastAnswer = numberOne / numberTwo;
+                        break;
+                    case "*":
+                        lastAnswer = numberOne * numberTwo;
+                        break;
+                    case "^":
+                        lastAnswer = Math.pow(numberOne, numberTwo);
+                        break;
+                    case "√":
+                        lastAnswer = Math.sqrt(numberOne);
+                        break;
+                    default:
+                        errorEngine.throwUnsupportedError(lastFunction);
+                        break;
+                }
+                //check if the user has issued a new calculation
+                if (newCalculation) {
+                    //previous number becomes the number, the user entered before the =
+                    previousNumber = number;
+                    displayEngine.setPreviousNumber(previousNumber);
+                    //remove lock
+                    newCalculation = false;
+                }
+                displayEngine.setNumber(lastAnswer);
                 break;
             case "number":
                 //simple number, add to display and working memory
@@ -43,8 +86,8 @@ $(() => {
                     case "AC":
                         //reset everything
                         displayEngine.clearAll();
-                        lastFunction = "";
-                        previousNumber = "";
+                        lastAnswer, lastFunction, previousNumber = "";
+                        newCalculation = true;
                         break;
                     case "+/-":
                         //flip
@@ -63,6 +106,8 @@ $(() => {
                 lastFunction = buttonContent;
                 displayEngine.clearScreen();
                 displayEngine.setPreviousNumber(previousNumber);
+                //make sure the last answer is empty, because the calculation has changed
+                newCalculation = true;
                 break;
             case "memory":
                 //memory storing and retrieving related functions
