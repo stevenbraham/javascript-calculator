@@ -8,8 +8,7 @@
 'use strict';
 
 //logic that has to be executed on page load
-$(() => {
-
+document.addEventListener("DOMContentLoaded", function (event) {
     //only init objects after jquery if fully available
     let displayEngine = new Display();
     let memoryEngine = new Memory();
@@ -24,11 +23,14 @@ $(() => {
     //display the number in memory
     displayEngine.setMemoryNumber(memoryEngine.number);
 
-    //listen to click events
-    $("button").click(function () { //$("button").click is short for $("button").on('click',...
-        let buttonContent = $(this).text();
+    [...document.querySelectorAll("button")].forEach((button) => {
+        button.addEventListener("click", onButtonClick)
+    });
+
+    function onButtonClick() { //$("button").click is short for $("button").on('click',...
+        let buttonContent = this.textContent;
         //get button type from data attribute
-        let buttonType = $(this).data("type");
+        let buttonType = this.getAttribute("data-type");
         switch (buttonType) {
             case "calculate":
                 //actual calculation logic
@@ -139,5 +141,5 @@ $(() => {
                 errorEngine.throwUnsupportedError(buttonContent);
                 break;
         }
-    });
+    }
 });
